@@ -1,7 +1,7 @@
 public class Cinema {
 
     private int seatsRequested;
-    int seatsAvailable = 15;
+
     int[][] allSeats = { // allSeats 0 if available, 1 if booked
             {'0', '0', '0', '0', '0'},
             {'0', '0', '0', '0', '0'},
@@ -13,10 +13,11 @@ public class Cinema {
 
         int row = 1;
         int seat = 1;
+        int seatsAvailable = 15;
 
     }
 
-    public int allocateSeats(int seatsRequested) {
+    public int allocateSeats(int seatsRequested, int seatsAvailable) {
 
         this.seatsRequested = seatsRequested;
 
