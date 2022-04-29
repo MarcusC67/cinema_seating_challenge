@@ -30,4 +30,11 @@ public class CinemaTest {
         assertEquals(expected, seats.allocateSeats(1));
     }
 
+    @Test
+    public void checkAllocatedThreeSeatsA1toA3() {
+        String expected = "A1 A2 A3";
+        Cinema seats = new Cinema();
+        assertEquals(expected, seats.allocateSeats(3));
+    }
+
 }
