@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CinemaTest {
 
+    /* @Ignore
     @Test
     public void checkIfAnySeatsAvailableAndReduceAvailableSeatsByThree() {
         // Arrange
@@ -11,17 +12,22 @@ public class CinemaTest {
         // Act
         Cinema seats = new Cinema();
         // Assert
-        assertEquals(expected, seats.allocateSeats(3, 15));
-    }
+        assertEquals(expected, seats.allocateSeats(3));
+    } */
 
+    /* @Ignore
     @Test
     public void checkIfCinemaFull() {
-        // Arrange
         int expected = 0;
-        // Act
         Cinema seats = new Cinema();
-        // Assert
-        assertEquals(expected, seats.allocateSeats(3, 0));
+        assertEquals(expected, seats.allocateSeats(3));
+    } */
+
+    @Test
+    public void checkAllocatedSingleSeatA1() {
+        String expected = "A1";
+        Cinema seats = new Cinema();
+        assertEquals(expected, seats.allocateSeats(1));
     }
 
 }
