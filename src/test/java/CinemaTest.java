@@ -1,13 +1,16 @@
 import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import static org.junit.Assert.assertEquals;
 
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class CinemaTest {
 
     /* @Ignore
     @Test
-    public void checkIfAnySeatsAvailableAndReduceAvailableSeatsByThree() {
+    public void t1checkIfAnySeatsAvailableAndReduceAvailableSeatsByThree() {
         // Arrange
         int expected = 12;
         // Act
@@ -18,28 +21,32 @@ public class CinemaTest {
 
     @Ignore
     @Test
-    public void checkIfCinemaFull() {
+    public void t2checkIfCinemaFull() {
         int expected = 0;
         Cinema seats = new Cinema();
         assertEquals(expected, seats.allocateSeats(3));
     }
 
     @Test
-    public void checkAllocatedSingleSeatA1() {
+    public void t3checkAllocatedSingleSeatA1() {
         String expected = "A1";
         Cinema seats = new Cinema();
         Assertions.assertEquals(expected, seats.allocateSeats(1));
     } */
 
     @Test
-    public void checkAllocatedThreeSeatsA1toA3() {
+    public void t4checkAllocatedThreeSeatsA1toA3() {
+        String actual;
         String expected = "A1 A2 A3";
+
         Cinema seats = new Cinema();
-        Assertions.assertEquals(expected, seats.allocateSeats(3));
+        actual = seats.allocateSeats(3);
+        System.out.println("Allocated the following seats = " + actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void checkAllocatedTwoLotsOfThreeSeatsA1toB1() {
+    public void t5checkAllocatedTwoLotsOfThreeSeatsA1toB1() {
         int seatsRequired;
         String actual = null;
         String expected = "A1 A2 A3 A4 A5 B1";
@@ -47,6 +54,22 @@ public class CinemaTest {
 
         Cinema seats = new Cinema();
         for (int i = 0; i <= 1; i++) {
+            seatsRequired = requested[i];
+            actual = seats.allocateSeats(seatsRequired);
+        }
+        System.out.println("Allocated the following seats = " + actual);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void t6checkAllocateSeatsA1toC1() {
+        int seatsRequired;
+        String actual = null;
+        String expected = "A1 A2 A3 A4 A5 B1 B2 B3 B4 B5 C1";
+        int[] requested = {3, 3, 3, 2};
+
+        Cinema seats = new Cinema();
+        for (int i = 0; i <= requested.length -1; i++) {
             seatsRequired = requested[i];
             actual = seats.allocateSeats(seatsRequired);
         }

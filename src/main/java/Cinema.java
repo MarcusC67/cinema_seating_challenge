@@ -5,6 +5,7 @@ public class Cinema {
     String returnStr;
 
     private int j = 0;
+    int newRow = 0;
     int row = 0;
     int seat = 0;
     char rowLetter = 'A';
@@ -23,11 +24,10 @@ public class Cinema {
             return "Sorry, no seats available!";
         } else {
 
-           // loop through each requested seat 1-3
+           // loop through requested seats 1-3
            for (int k = 0; k < seatsRequested; k++) {
                j++;
-               // row is 0 - need update row - call method set row
-               str = String.valueOf(seatsBooked.append(allocateOneSeat(row, j)).append(" "));
+               str = String.valueOf(seatsBooked.append(allocateOneSeat(newRow, j)).append(" "));
                seatsAvailable--;
             }
         }
@@ -37,17 +37,19 @@ public class Cinema {
 
     public String allocateOneSeat(int row, int seat) {
 
+        // if last seat in row, update row to next row eg: A to B, B to C
         if (seat == 5) {
             returnStr = rowLetter + String.valueOf(seat);
-            row ++;
-            rowLetter = rows.charAt(row);
+            newRow = row + 1;
+            rowLetter = rows.charAt(newRow);
             seat = 1;
             j = 0;
         } else {
+            // set return string to allocated row and seat eg: A1
             returnStr = rowLetter + String.valueOf(seat);
             seat ++;
         }
-        return returnStr; // return individual row and seat eg: A1
+        return returnStr; // return allocated row and seat eg: A1
     }
 
 }
