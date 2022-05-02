@@ -93,4 +93,20 @@ public class CinemaTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void t8checkNoSeatsAvailable() {
+        int seatsRequired;
+        String actual = null;
+        String expected = "Sorry, no seats available!";
+        int[] requested = {3, 3, 3, 3, 3, 1};
+
+        Cinema seats = new Cinema();
+        for (int i = 0; i <= requested.length -1; i++) {
+            seatsRequired = requested[i];
+            actual = seats.allocateSeats(seatsRequired);
+        }
+        System.out.println(actual);
+        Assertions.assertEquals(expected, actual);
+    }
+
 }
