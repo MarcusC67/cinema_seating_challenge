@@ -40,10 +40,13 @@ public class Cinema {
         // if last seat in row, update row to next row eg: A to B, B to C
         if (seat == 5) {
             returnStr = rowLetter + String.valueOf(seat);
-            newRow = row + 1;
-            rowLetter = rows.charAt(newRow);
-            seat = 1;
-            j = 0;
+
+            if (seatsAvailable != 1)
+                newRow = row + 1;
+                rowLetter = rows.charAt(newRow);
+                seat = 1;
+                j = 0;
+
         } else {
             // set return string to allocated row and seat eg: A1
             returnStr = rowLetter + String.valueOf(seat);

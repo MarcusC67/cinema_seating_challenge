@@ -77,4 +77,20 @@ public class CinemaTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void t7checkAllocateSeatsA1toC5() {
+        int seatsRequired;
+        String actual = null;
+        String expected = "A1 A2 A3 A4 A5 B1 B2 B3 B4 B5 C1 C2 C3 C4 C5";
+        int[] requested = {3, 3, 3, 3, 3};
+
+        Cinema seats = new Cinema();
+        for (int i = 0; i <= requested.length -1; i++) {
+            seatsRequired = requested[i];
+            actual = seats.allocateSeats(seatsRequired);
+        }
+        System.out.println("Allocated the following seats = " + actual);
+        Assertions.assertEquals(expected, actual);
+    }
+
 }
