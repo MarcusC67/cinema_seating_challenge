@@ -109,4 +109,16 @@ public class CinemaTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void t9heckInvalidNumberOfSeatsRequested() {
+        String actual = null;
+        Cinema seats = new Cinema();
+
+        actual = seats.allocateSeats(4);
+        String expected = "Sorry, number of seats requested must be between 1 and 3!";
+
+        System.out.println(actual);
+        Assertions.assertEquals(expected, actual);
+    }
+
 }

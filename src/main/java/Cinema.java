@@ -24,12 +24,16 @@ public class Cinema {
             return "Sorry, no seats available!";
         } else {
 
-           // loop through requested seats 1-3
-           for (int k = 0; k < seatsRequested; k++) {
-               j++;
-               str = String.valueOf(seatsBooked.append(allocateOneSeat(newRow, j)).append(" "));
-               seatsAvailable--;
-            }
+           if (seatsRequested >= 1 && seatsRequested <= 3) {
+               // loop through requested seats 1-3
+               for (int k = 0; k < seatsRequested; k++) {
+                   j++;
+                   str = String.valueOf(seatsBooked.append(allocateOneSeat(newRow, j)).append(" "));
+                   seatsAvailable--;
+               }
+           } else {
+               return "Sorry, number of seats requested must be between 1 and 3!";
+           }
         }
         str = str.substring(0, str.length() - 1); // strip out last space
         return str; // return string of all booked seats
