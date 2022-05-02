@@ -1,14 +1,11 @@
-import org.junit.Ignore;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+
+import org.junit.jupiter.api.*;
 import static org.junit.Assert.assertEquals;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class CinemaTest {
 
-    /* @Ignore
+    @Disabled
     @Test
     public void t1checkIfAnySeatsAvailableAndReduceAvailableSeatsByThree() {
         // Arrange
@@ -19,7 +16,7 @@ public class CinemaTest {
         assertEquals(expected, seats.allocateSeats(3));
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void t2checkIfCinemaFull() {
         int expected = 0;
@@ -27,12 +24,13 @@ public class CinemaTest {
         assertEquals(expected, seats.allocateSeats(3));
     }
 
+    @Disabled
     @Test
     public void t3checkAllocatedSingleSeatA1() {
         String expected = "A1";
         Cinema seats = new Cinema();
         Assertions.assertEquals(expected, seats.allocateSeats(1));
-    } */
+    }
 
     @Test
     public void t4checkAllocatedThreeSeatsA1toA3() {

@@ -15,6 +15,7 @@ public class Cinema {
 
     // constructor
     public Cinema() {
+        // max seats in cinema = 15 (3 rows A,B,C - each row with 5 seats)
         this.seatsAvailable = 15;
     }
 
@@ -24,27 +25,32 @@ public class Cinema {
             return "Sorry, no seats available!";
         } else {
 
-           if (seatsRequested >= 1 && seatsRequested <= 3) {
-               // loop through requested seats 1-3
-               for (int k = 0; k < seatsRequested; k++) {
-                   j++;
-                   str = String.valueOf(seatsBooked.append(allocateOneSeat(newRow, j)).append(" "));
-                   seatsAvailable--;
-               }
-           } else {
-               return "Sorry, number of seats requested must be between 1 and 3!";
-           }
+            try {
+                if (seatsRequested >= 1 && seatsRequested <= 3) {
+                    // loop through requested seats 1-3
+                    for (int k = 0; k < seatsRequested; k++) {
+                        j++;
+                        str = String.valueOf(seatsBooked.append(allocateOneSeat(newRow, j)).append(" "));
+                        seatsAvailable--;
+                    }
+                } else {
+                    return "Sorry, number of seats requested must be between 1 and 3!";
+                }
+            } catch (Exception e) {
+                System.out.println("Something went wrong.");
+            }
         }
         str = str.substring(0, str.length() - 1); // strip out last space
         return str; // return string of all booked seats
     }
 
-    public String allocateOneSeat(int row, int seat) {
+    private String allocateOneSeat(int row, int seat) {
 
-        // if last seat in row, update row to next row eg: A to B, B to C
+        // if last seat in row, update row to next row eg: A to B or B to C
         if (seat == 5) {
             returnStr = rowLetter + String.valueOf(seat);
 
+            // if this is not the last seat available, then continue to next row
             if (seatsAvailable != 1)
                 newRow = row + 1;
                 rowLetter = rows.charAt(newRow);
