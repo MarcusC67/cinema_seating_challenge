@@ -6,10 +6,8 @@ public class Cinema {
 
     private int j = 0;
     int newRow = 0;
-    int row = 0;
-    int seat = 0;
     char rowLetter = 'A';
-    String rows = "ABC";
+    String ROWS = "ABC";
 
     StringBuilder seatsBooked = new StringBuilder();
 
@@ -53,7 +51,7 @@ public class Cinema {
             // if this is not the last seat available, then continue to next row
             if (seatsAvailable != 1)
                 newRow = row + 1;
-                rowLetter = rows.charAt(newRow);
+                rowLetter = ROWS.charAt(newRow);
                 seat = 1;
                 j = 0;
 
